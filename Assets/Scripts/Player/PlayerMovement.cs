@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 1;
+    [SerializeField] private float speed = 5;
+    [SerializeField] private float gravity = 1;
     
     private CharacterController _characterController;
     
@@ -10,7 +11,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        float movement = PlayerController.Movement * speed * Time.deltaTime;
-        _characterController.Move(Vector3.right * movement);
+        Vector3 velocity = Vector3.right * (PlayerController.Movement * speed);
+        if (!_characterController.isGrounded)
+            velocity.y -= gravity;
+        _characterController.Move(velocity * Time.deltaTime);
     }
 }
