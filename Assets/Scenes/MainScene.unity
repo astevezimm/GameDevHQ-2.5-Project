@@ -237,8 +237,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f67a3dd553c32344aec5ce8447f871b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  gravity: 3
+  speed: 10
+  gravity: 1
+  jumpForce: 35
 --- !u!114 &508206880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,6 +488,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 613d07eb-c9a2-496e-a482-a821e0475a33
     m_ActionName: Main/New action[/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 508206880}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: aa91a99a-d728-487d-8853-e6cac4a90953
+    m_ActionName: Main/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: keyboard
   m_DefaultActionMap: Main
@@ -526,7 +543,6 @@ Transform:
   m_Children:
   - {fileID: 1074156385}
   - {fileID: 1686104098}
-  - {fileID: 3839015863886516950}
   - {fileID: 1898495324}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -712,65 +728,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8915da6a24197744b811ae6fdac6d710, type: 3}
---- !u!1001 &3839015863886516949
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1548339887}
-    m_Modifications:
-    - target: {fileID: 722914930582335140, guid: cce6b1dc7a298a44e8e8735c3ac53ff3, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 722914930582335140, guid: cce6b1dc7a298a44e8e8735c3ac53ff3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.513048
-      objectReference: {fileID: 0}
-    - target: {fileID: 722914930582335140, guid: cce6b1dc7a298a44e8e8735c3ac53ff3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 722914930582335140, guid: cce6b1dc7a298a44e8e8735c3ac53ff3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 722914930582335140, guid: cce6b1dc7a298a44e8e8735c3ac53ff3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 722914930582335140, guid: cce6b1dc7a298a44e8e8735c3ac53ff3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 722914930582335140, guid: cce6b1dc7a298a44e8e8735c3ac53ff3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 722914930582335140, guid: cce6b1dc7a298a44e8e8735c3ac53ff3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 722914930582335140, guid: cce6b1dc7a298a44e8e8735c3ac53ff3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 722914930582335140, guid: cce6b1dc7a298a44e8e8735c3ac53ff3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 722914930582335140, guid: cce6b1dc7a298a44e8e8735c3ac53ff3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9211535827186205558, guid: cce6b1dc7a298a44e8e8735c3ac53ff3, type: 3}
-      propertyPath: m_Name
-      value: Collectable
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cce6b1dc7a298a44e8e8735c3ac53ff3, type: 3}
---- !u!4 &3839015863886516950 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 722914930582335140, guid: cce6b1dc7a298a44e8e8735c3ac53ff3, type: 3}
-  m_PrefabInstance: {fileID: 3839015863886516949}
-  m_PrefabAsset: {fileID: 0}
