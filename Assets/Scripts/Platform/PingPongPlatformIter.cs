@@ -6,12 +6,14 @@ public class PingPongPlatformIter : IPlatformIter
     private readonly Transform[] _wayPoints;
     private int _index;
     private bool _forward = true;
+
+    public bool Finished => false;
     
     public Vector3 NextPoint => _wayPoints[_index].position;
 
     public PingPongPlatformIter(Transform[] wayPoints) => _wayPoints = wayPoints;
 
-    public IEnumerator ChangeNextPoint()
+    public void ChangeNextPoint()
     {
         if (_forward)
         {
@@ -31,6 +33,5 @@ public class PingPongPlatformIter : IPlatformIter
                 _forward = true;
             }
         }
-        yield return null;
     }
 }

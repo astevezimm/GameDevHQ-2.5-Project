@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
+    [SerializeField] private Transform platform;
     [SerializeField] private Transform[] wayPoints;
     [SerializeField] private float speed = 1;
     [SerializeField] private PlatformMovementType type;
@@ -12,7 +12,9 @@ public class MovingPlatform : MonoBehaviour
 
     private void Start()
     {
-        wayPoints ??= new[] {transform};
+        wayPoints ??= new[] {platform};
+        if (wayPoints.Length == 1)
+            type = PlatformMovementType.SinglePass;
         _platformIter = type switch
         {
             PlatformMovementType.Loop => new LoopPlatformIter(wayPoints),
@@ -27,10 +29,14 @@ public class MovingPlatform : MonoBehaviour
         while (true)
         {
             float delta = speed * Time.deltaTime;
-            transform.position =
-                Vector3.MoveTowards(transform.position, _platformIter.NextPoint, delta);
-            if (transform.position == _platformIter.NextPoint)
-                yield return _platformIter.ChangeNextPoint();
+            platform.position =
+                Vector3.MoveTowards(platform.position, _platformIter.NextPoint, delta);
+            if (platform.position == _platformIter.NextPoint)
+            {
+                _platformIter.ChangeNextPoint();
+                if (_platformIter.Finished)
+                    yield break;
+            }
             yield return null;
         }
     }

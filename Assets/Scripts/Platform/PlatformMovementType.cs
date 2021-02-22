@@ -2,5 +2,5 @@
 {
     PingPong,
     Loop,
-    SingPass
+    SinglePass
 }

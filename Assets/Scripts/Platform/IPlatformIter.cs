@@ -3,6 +3,7 @@ using UnityEngine;
 
 public interface IPlatformIter
 {
+    bool Finished { get; }
     Vector3 NextPoint { get; }
-    IEnumerator ChangeNextPoint();
+    void ChangeNextPoint();
 }
