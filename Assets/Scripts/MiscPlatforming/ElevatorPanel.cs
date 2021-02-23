@@ -2,6 +2,8 @@
 
 public class ElevatorPanel : MonoBehaviour
 {
+    [SerializeField] private int coinQuota = 8;
+    
     private bool _activatable;
     private CallButton _callButton;
 
@@ -25,7 +27,7 @@ public class ElevatorPanel : MonoBehaviour
 
     private void HandleActivate()
     {
-        if (_activatable)
+        if (_activatable && Coin.CoinsCollected >= coinQuota)
         {
             _callButton.TurnOn();
         }
