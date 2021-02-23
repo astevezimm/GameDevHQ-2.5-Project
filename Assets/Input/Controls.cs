@@ -33,6 +33,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Activate"",
+                    ""type"": ""Button"",
+                    ""id"": ""7ad0e295-dcca-4f19-9a14-3d6d16a77959"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -79,6 +87,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""095dda2f-4f2e-4661-8ab5-8657794b445b"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard"",
+                    ""action"": ""Activate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -101,6 +120,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Main = asset.FindActionMap("Main", throwIfNotFound: true);
         m_Main_Movement = m_Main.FindAction("Movement", throwIfNotFound: true);
         m_Main_Jump = m_Main.FindAction("Jump", throwIfNotFound: true);
+        m_Main_Activate = m_Main.FindAction("Activate", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -152,12 +172,14 @@ public class @Controls : IInputActionCollection, IDisposable
     private IMainActions m_MainActionsCallbackInterface;
     private readonly InputAction m_Main_Movement;
     private readonly InputAction m_Main_Jump;
+    private readonly InputAction m_Main_Activate;
     public struct MainActions
     {
         private @Controls m_Wrapper;
         public MainActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Main_Movement;
         public InputAction @Jump => m_Wrapper.m_Main_Jump;
+        public InputAction @Activate => m_Wrapper.m_Main_Activate;
         public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -173,6 +195,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_MainActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_MainActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_MainActionsCallbackInterface.OnJump;
+                @Activate.started -= m_Wrapper.m_MainActionsCallbackInterface.OnActivate;
+                @Activate.performed -= m_Wrapper.m_MainActionsCallbackInterface.OnActivate;
+                @Activate.canceled -= m_Wrapper.m_MainActionsCallbackInterface.OnActivate;
             }
             m_Wrapper.m_MainActionsCallbackInterface = instance;
             if (instance != null)
@@ -183,6 +208,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Activate.started += instance.OnActivate;
+                @Activate.performed += instance.OnActivate;
+                @Activate.canceled += instance.OnActivate;
             }
         }
     }
@@ -200,5 +228,6 @@ public class @Controls : IInputActionCollection, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnActivate(InputAction.CallbackContext context);
     }
 }

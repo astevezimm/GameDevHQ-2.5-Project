@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1690841608026987819}
+  - component: {fileID: 1835695068995172443}
   m_Layer: 0
   m_Name: Moving_Platform
   m_TagString: Untagged
@@ -33,6 +34,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1835695068995172443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3607593818387752167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d95e0ed823a4c21a6e4c53a3b1adefd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platform: {fileID: 281319561905776275}
+  wayPoints:
+  - {fileID: 281319563311919295}
+  - {fileID: 281319561370558541}
+  speed: 1
+  type: 0
 --- !u!1 &5894511865384148303
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,6 +170,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -175,6 +196,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &8931073251554396226
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -226,9 +248,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5894511866664455011}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe379cb13f0ca74459bc0670acd0f51e, type: 3}
+  m_Script: {fileID: 11500000, guid: 93d1b5f2caf74028b76ff9d79bc3627c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetA: {fileID: 281319563311919295}
-  _targetB: {fileID: 281319561370558541}
-  _speed: 3
