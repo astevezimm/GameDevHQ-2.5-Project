@@ -21,23 +21,16 @@ public class MovingPlatform : MonoBehaviour
             PlatformMovementType.PingPong => new PingPongPlatformIter(wayPoints),
             _ => new SingPassPlatformIter(wayPoints)
         };
-        StartCoroutine(Tick());
     }
 
-    private IEnumerator Tick()
+    private void FixedUpdate()
     {
-        while (true)
-        {
-            float delta = speed * Time.deltaTime;
-            platform.position =
-                Vector3.MoveTowards(platform.position, _platformIter.NextPoint, delta);
-            if (platform.position == _platformIter.NextPoint)
-            {
-                _platformIter.ChangeNextPoint();
-                if (_platformIter.Finished)
-                    yield break;
-            }
-            yield return null;
-        }
+        if (_platformIter.Finished)
+            return;
+        float delta = speed * Time.deltaTime;
+        platform.position =
+            Vector3.MoveTowards(platform.position, _platformIter.NextPoint, delta);
+        if (platform.position == _platformIter.NextPoint)
+            _platformIter.ChangeNextPoint();
     }
 }
